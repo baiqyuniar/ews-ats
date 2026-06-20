@@ -24,6 +24,26 @@ export default function SlemanGeoMap() {
     { id: "prambanan", name: "Prambanan" },
   ];
 
+  const regionMap: any = {
+    Godean: "godean",
+    Ngaglik: "ngaglik",
+    Tempel: "tempel",
+    Turi: "turi",
+    Pakem: "pakem",
+    Cangkringan: "cangkringan",
+    Minggir: "minggir",
+    Seyegan: "seyegan",
+    Sleman: "sleman",
+    Ngemplak: "ngemplak",
+    Moyudan: "moyudan",
+    Mlati: "mlati",
+    Depok: "depok",
+    Kalasan: "kalasan",
+    Gamping: "gamping",
+    Berbah: "berbah",
+    Prambanan: "prambanan",
+  };
+
   const schoolData: Record<
     string,
     { name: string; risk: number; status: string }[]
@@ -80,44 +100,47 @@ export default function SlemanGeoMap() {
         </div>
 
         <div className="w-full overflow-auto">
-          <EwsRiskMap>
-            <div className="flex flex-wrap items-center gap-6 mt-6 px-2">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-red-500" />
-                <span className="text-sm text-slate-600 font-medium">
-                  Kritis (90+)
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-orange-400" />
-                <span className="text-sm text-slate-600 font-medium">
-                  Tinggi (75-89)
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-yellow-300" />
-                <span className="text-sm text-slate-600 font-medium">
-                  Sedang (60-74)
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-green-300" />
-                <span className="text-sm text-slate-600 font-medium">
-                  Rendah (45-59)
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-green-500" />
-                <span className="text-sm text-slate-600 font-medium">
-                  Sangat Rendah (&lt;45)
-                </span>
-              </div>
+          <EwsRiskMap
+            onRegionClick={(regionId) => {
+              setSelectedRegion(regionId);
+            }}
+          />
+          <div className="flex flex-wrap items-center gap-6 mt-6 px-2">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-red-500" />
+              <span className="text-sm text-slate-600 font-medium">
+                Kritis (90+)
+              </span>
             </div>
-          </EwsRiskMap>
+
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-orange-400" />
+              <span className="text-sm text-slate-600 font-medium">
+                Tinggi (75-89)
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-yellow-300" />
+              <span className="text-sm text-slate-600 font-medium">
+                Sedang (60-74)
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-green-300" />
+              <span className="text-sm text-slate-600 font-medium">
+                Rendah (45-59)
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded bg-green-500" />
+              <span className="text-sm text-slate-600 font-medium">
+                Sangat Rendah (&lt;45)
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
